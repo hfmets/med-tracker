@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Doctor
+class DoctorsWithMedication
+class Medication
+class Person
+class Record
+class User
+class UserWithDoctors
+
+User <|-- Person
+Doctor <|-- Person
+DoctorsWithMedication *-- Medication
+DoctorsWithMedication *-- Doctor
+UserWithDoctors *-- User
+UserWithDoctors *-- Doctor
+User "1" --> "many" Medication
+Doctor "1" --> "many" Medication
+
+Doctor : int doctorId
+Doctor : String address
+Doctor : String phone
+
+Medication : int medicationId
+Medication : int amount
+Medication : int lowThresh
+Medication : int doctorId
+Medication : int userId
+Medication : String name
+Medication : String sideEffects
+Medication : String dosage
+Medication : TakeTimeCategory takeTimeCategory
+Medication : boolean taken
+
+Person : String first
+Person : String last
+
+Record : int recordsId
+Record : String date
+Record : String morningMedicationsTaken
+Record : String afternoonMedicationsTaken
+Record : String eveningMedicationsTaken
+
+User : int userId
+User : int age
+User : String password
+User : Gender gender
+User : boolean morningOn
+User : boolean afternoonOn
+User : boolean eveningOn
+User : LocalTime morningAlert
+User : LocalTime afternoonAlert
+User : LocalTime eveningAlert
+
+note "All classes have getters and setters for each field" as N1
+note "Both UserWithDoctors and DoctorsWithMedications serve as \npolymorphed classes as they combine two classes into \none to implement the same methods with tweaks to get more specific data." as N2
+DoctorsWithMedication ... N2
+UserWithDoctors ... N2
+@enduml

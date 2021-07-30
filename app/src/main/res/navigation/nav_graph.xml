@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.medtracker.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/medsFragment"
+        android:name="com.example.medtracker.fragments.MedsFragment"
+        android:label="fragment_meds"
+        tools:layout="@layout/fragment_meds" >
+        <action
+            android:id="@+id/action_medsFragment_to_newMedicationFragment"
+            app:destination="@id/newMedicationFragment"
+            app:popUpTo="@id/newMedicationFragment" />
+        <action
+            android:id="@+id/action_medsFragment_to_editMedicationFragment"
+            app:destination="@id/editMedicationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorsFragment"
+        android:name="com.example.medtracker.fragments.DoctorsFragment"
+        android:label="fragment_doctors"
+        tools:layout="@layout/fragment_doctors" >
+        <action
+            android:id="@+id/action_doctorsFragment_to_newDoctorFragment"
+            app:destination="@id/newDoctorFragment"
+            app:popUpTo="@id/newDoctorFragment" />
+        <action
+            android:id="@+id/action_doctorsFragment_to_editDoctorFragment"
+            app:destination="@id/editDoctorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.medtracker.fragments.ReportsFragment"
+        android:label="ReportsFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.medtracker.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.medtracker.fragments.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+    <action
+        android:id="@+id/action_global_signUpFragment"
+        app:destination="@id/signUpFragment"
+        app:popUpTo="@id/signUpFragment" />
+    <fragment
+        android:id="@+id/newMedicationFragment"
+        android:name="com.example.medtracker.fragments.NewMedicationFragment"
+        android:label="NewMedicationFragment" />
+    <fragment
+        android:id="@+id/newDoctorFragment"
+        android:name="com.example.medtracker.fragments.NewDoctorFragment"
+        android:label="fragment_new_doctor"
+        tools:layout="@layout/fragment_new_doctor" />
+    <fragment
+        android:id="@+id/editDoctorFragment"
+        android:name="com.example.medtracker.fragments.EditDoctorFragment"
+        android:label="EditDoctorFragment" >
+        <argument
+            android:name="doctorId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/editMedicationFragment"
+        android:name="com.example.medtracker.fragments.EditMedicationFragment"
+        android:label="EditMedicationFragment" >
+        <argument
+            android:name="medicationId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
